@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!--<meta http-equiv="refresh" content="1">-->
+  <title>Score Livestream Admin Controls</title>
+  <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 10px;
+}
+th {
+  text-align: left;
+}
+</style>
+</head>
+
+<body>
+  <h1>RoboWars Admin Controls!!!</h1>
+
+    <table style="width:25%">
+      <tr>
+        <th>Team</th>
+        <th>Score</th>
+        <th>Increase</th>
+        <th>Decrease</th>
+      </tr>
+        <% newListItems.forEach(function(item){ %>
+        <tr>
+          <td> <%=item.team %> </td>
+          <td> <%=item.points%> </td>
+          <td> <form action="/increase" method="post"> <button type="submit" name="increase" value="<%= item._id %>" >+</button> </form></td>
+          <td> <form action="/decrease" method="post"> <button type="submit" name="decrease" value="<%= item._id %>" >-</button> </form> </td>
+        </tr>
+        <% }); %>
+    </table>
+
+</body>
+
+</html>
